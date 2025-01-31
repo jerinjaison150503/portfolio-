@@ -1,8 +1,12 @@
 from flask import Flask, render_template, request, redirect, flash, url_for
 from flask_mail import Mail, Message
+from flask_wtf.csrf import CSRFProtect  # Import CSRF protection
 
 app = Flask(__name__)
 app.secret_key = "temporary_secret_key"
+
+# Initialize CSRF protection
+csrf = CSRFProtect(app)
 
 # Flask-Mail Configuration
 app.config['MAIL_SERVER'] = 'smtp.gmail.com'
