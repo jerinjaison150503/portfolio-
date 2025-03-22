@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <style>
+        body {
+            background-color: #0c319e;
+            color: #ffffff;
+            font-family: 'Courier New', Courier, monospace;
+            text-shadow: 0 0 5px #ffffff;
+            overflow: hidden;
+            position: relative;
+        }
+        .crt-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(rgba(255, 255, 255, 0.05) 50%, rgba(255, 255, 255, 0.1) 50%);
+            background-size: 100% 4px;
+            pointer-events: none;
+            z-index: 999;
+            opacity: 0.7;
+        }
+        .crt-flicker {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.02);
+            mix-blend-mode: overlay;
+            animation: flicker 0.05s infinite alternate;
+        }
+        @keyframes flicker {
+            from { opacity: 0.1; }
+            to { opacity: 0.3; }
+        }
+        .background-letters {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            font-size: 12px;
+            font-family: monospace;
+            color: rgba(255, 255, 255, 0.5);
+            pointer-events: none;
+            overflow: hidden;
+            z-index: -1;
+        }
+        .letter {
+            position: absolute;
+            opacity: 0.6;
+            font-size: 14px;
+            white-space: nowrap;
+            animation: moveRight linear infinite;
+        }
+        @keyframes moveRight {
+            from { transform: translateX(-100vw); }
+            to { transform: translateX(100vw); }
+        }
+        .scramble-text {
+            font-size: 24px;
+            font-weight: bold;
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            white-space: nowrap;
+        }
+    </style>
+</head>
+<body>
+    <div class="crt-overlay"></div>
+    <div class="crt-flicker"></div>
+    <div class="background-letters" id="background-letters"></div>
+    <div class="scramble-text" id="scramble-text">LOADING...</div>
+    
+    <script>
+        function generateBackgroundLetters() {
+            const container = document.getElementById("background-letters");
+            container.innerHTML = "";
+            const chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789{}[]();<>=+*/";
+            const totalLetters = 100;
+            
+            for (let i = 0; i < totalLetters; i++) {
+                const letter = document.createElement("span");
+                letter.classList.add("letter");
+                letter.textContent = chars[Math.floor(Math.random() * chars.length)];
+                letter.style.top = `${Math.random() * 100}vh`;
+                letter.style.animationDuration = `${2 + Math.random() * 5}s`;
+                container.appendChild(letter);
+            }
+        }
+        generateBackgroundLetters();
+        
+        function scrambleTextEffect(element, text, speed = 50, delay = 2000) {
+            const chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*()";
+            let scrambledText = text.split("").map(() => chars[Math.floor(Math.random() * chars.length)]).join("");
+            let index = 0;
+            const interval = setInterval(() => {
+                scrambledText = scrambledText.split("").map((char, i) => {
+                    if (i <= index) return text[i];
+                    return chars[Math.floor(Math.random() * chars.length)];
+                }).join("");
+                element.textContent = scrambledText;
+                if (index >= text.length) {
+                    clearInterval(interval);
+                    setTimeout(() => scrambleTextEffect(element, text, speed, delay), delay);
+                }
+                index++;
+            }, speed);
+        }
+        
+        const scrambleElement = document.getElementById("scramble-text");
+        scrambleTextEffect(scrambleElement, "PORTFOLIO", 30, 3000);
+    </script>
+</body>
+</html>

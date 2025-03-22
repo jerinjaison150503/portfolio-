@@ -1,4 +1,5 @@
-from flask import Flask, render_template, request, redirect, flash, url_for
+import os
+from flask import Flask, render_template, request, redirect, flash
 from flask_mail import Mail, Message
 
 app = Flask(__name__)
@@ -9,15 +10,14 @@ app.config['MAIL_SERVER'] = 'smtp.gmail.com'
 app.config['MAIL_PORT'] = 587
 app.config['MAIL_USE_TLS'] = True
 app.config['MAIL_USE_SSL'] = False
-app.config['MAIL_USERNAME'] = "frommyportfolio015@gmail.com"  
-app.config['MAIL_PASSWORD'] = "ybud mpzm syvw dgcu"          
-app.config['MAIL_DEFAULT_SENDER'] = "frommyportfolio015@gmail.com"
+app.config['MAIL_USERNAME'] = "frommyportfolio015@gmail.com"
+app.config['MAIL_PASSWORD'] = "ybud mpzm syvw dgcu"
+app.config['MAIL_DEFAULT_SENDER'] = app.config['MAIL_USERNAME']
 
 mail = Mail(app)
 
 @app.route('/')
 def index():
-    """Render the homepage with the contact form."""
     return render_template('index.html')
 
 @app.route('/contact_me', methods=['POST'])
@@ -29,21 +29,22 @@ def contact_me():
         subject = request.form.get('subject')
         message = request.form.get('message')
 
-        if not name or not email or not subject or not message:
+        if not all([name, email, subject, message]):
             flash("All fields are required!", "danger")
-            return redirect(url_for('index'))
+            return redirect('/')
 
         # Create email message
-        msg = Message(subject=subject, recipients=["jerinforwork@gmail.com"])
-        msg.body = f"Name: {name}\nEmail: {email}\nMessage: {message}\n"
+        msg = Message(subject=f"New Contact: {subject}",
+                      sender=app.config['MAIL_DEFAULT_SENDER'],
+                      recipients=["jerinforwork@gmail.com"])
+        msg.body = f"Name: {name}\nEmail: {email}\nMessage:\n{message}"
 
         try:
             mail.send(msg)
             flash("Your message has been sent successfully!", "success")
         except Exception as e:
-            flash(f"An error occurred: {str(e)}", "danger")
+            app.logger.error(f"Failed to send email: {e}")
+            flash("Failed to send message. Please try again later.", "danger")
 
-    return redirect(url_for('index'))
-
-if __name__ == "__main__":
-    app.run(debug=True)
+    return redirect('/')
+app.run()

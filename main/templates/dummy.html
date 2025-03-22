@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jerin Jaison's Portfolio</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #0c319e;
+            color: #ffffff;
+            font-family: 'Courier New', Courier, monospace;
+            text-shadow: 0 0 5px #ffffff;
+            
+            position: relative;
+        }
+        header {
+            background: linear-gradient(135deg, #1190cb76, #7496eeb9);
+            text-align: center;
+            padding: 60px 20px;
+            color: #ffffff;
+        }
+        header h1 {
+            font-size: 3.5rem;
+            margin-bottom: 15px;
+            font-weight: bold;
+        }
+        header p {
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+        }
+        
+        nav a {
+            color: #f4f4f4;
+            font-weight: bold;
+        }
+        nav a:hover {
+            color: #ffc107;
+        }
+        .profile-image {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            border: 5px solid #ffc107;
+            margin: 20px auto;
+            display: block;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.5);
+        }
+        section {
+            padding: 40px 20px;
+        }
+        .btn-custom {
+            background-color: #ffc107;
+            color: #212529;
+            border: none;
+            padding: 10px 20px;
+            font-weight: bold;
+            border-radius: 5px;
+        }
+        .btn-custom:hover {
+            background-color: #e0a800;
+        }
+        footer {
+            background-color: #212529;
+            text-align: center;
+            padding: 20px;
+            color: #f4f4f4;
+        }
+        .card {
+            background-color: #2a2a2a;
+            border: none;
+            transition: transform 0.3s ease;
+        }
+        .card:hover {
+            transform: scale(1.05);
+        }
+        .card-title {
+            color: #ffc107;
+        }
+        .progress {
+            height: 20px;
+        }
+        .progress-bar {
+            background-color: #ffc107;
+        }
+
+
+        .crt-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(rgba(255, 255, 255, 0.05) 50%, rgba(255, 255, 255, 0.1) 50%);
+            background-size: 100% 4px;
+            pointer-events: none;
+            z-index: 999;
+            opacity: 0.7;
+        }
+        .crt-flicker {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.02);
+            mix-blend-mode: overlay;
+            animation: flicker 0.05s infinite alternate;
+        }
+        .crt-overlay, .crt-flicker {
+            pointer-events: none; 
+        }
+        @keyframes flicker {
+            from { opacity: 0.1; }
+            to { opacity: 0.3; }
+        }
+        .background-letters {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            font-size: 12px;
+            font-family: monospace;
+            color: rgba(255, 255, 255, 0.5);
+            pointer-events: none;
+            overflow: hidden;
+            z-index: -1;
+        }
+        .letter {
+            position: absolute;
+            opacity: 0.6;
+            font-size: 14px;
+            white-space: nowrap;
+            animation: moveRight linear infinite;
+        }
+        @keyframes moveRight {
+            from { transform: translateX(-100vw); }
+            to { transform: translateX(100vw); }
+        }
+        .scramble-text {
+            font-size: 24px;
+            font-weight: bold;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            white-space: nowrap;
+        }
+
+
+    </style>
+</head>
+<body>
+    <header>
+        <div class="crt-overlay"></div>
+        <div class="crt-flicker"></div>
+        <div class="background-letters" id="background-letters"></div>
+    
+        <img src="../static/img/j.jpg" alt="Profile Picture" class="profile-image">
+        <!-- <div class="scramble-text" id="scramble-text">LOADING...</div> -->
+
+        <h1>Jerin Jaison</h1>
+        <p>Fullstack Developer | Intern at Synneffo Solution</p>
+        <a href="#projects" class="btn btn-custom">My Projects</a>
+        <a href="#contact" class="btn btn-custom">Contact Me</a>
+    </header>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container-fluid" >
+            <a class="navbar-brand"  class="scramble-text" id="scramble-text" href="#">Jerin Jaison</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#about">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#projects">Projects</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#skills">Skills</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#contact">Contact</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <section id="about" class="container">
+        <h2>About Me</h2>
+        <p>I am a passionate developer currently interning at Syneffo Solution. I specialize in creating user-friendly e-commerce platforms and am enthusiastic about learning new technologies like Python and web development frameworks.</p>
+    </section>
+    <section id="projects" class="container">
+        <h2 class="text-center mb-4">Projects</h2>
+        <div class="row">
+            <!-- Pet E-commerce Website -->
+            <div class="col-md-6">
+                <a href="https://github.com/jerinjaison150503/E-commerce-Site-Tails-and-Beyond" target="_blank" class="text-decoration-none text-reset">
+                    <div class="card mb-4">
+                        <div class="card-body">
+                            <h5 class="card-title">Pet E-commerce Website</h5>
+                            <p class="card-text">A platform to buy pet accessories and toys. Developed during my internship at Syneffo Solution.</p>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <!-- Portfolio Website -->
+            <div class="col-md-6">
+                <a href="https://github.com/jerinjaison150503/portfolio-" target="_blank" class="text-decoration-none text-reset">
+                    <div class="card mb-4">
+                        <div class="card-body">
+                            <h5 class="card-title">Portfolio Website</h5>
+                            <p class="card-text">My personal portfolio showcasing projects and achievements. Built with HTML, CSS, and Bootstrap.</p>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <!-- BookMyShow Clone -->
+            <div class="col-md-6">
+                <a href="https://github.com/jerinjaison150503/bookmyshow_clone" target="_blank" class="text-decoration-none text-reset">
+                    <div class="card mb-4">
+                        <div class="card-body">
+                            <h5 class="card-title">BookMyShow Clone</h5>
+                            <p class="card-text">A movie ticket booking platform built with HTML, CSS, and Bootstrap.</p>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <!-- Media Vault -->
+            <div class="col-md-6">
+                <a href="https://github.com/jerinjaison150503/media--vault" target="_blank" class="text-decoration-none text-reset">
+                    <div class="card mb-4">
+                        <div class="card-body">
+                            <h5 class="card-title">Media Vault</h5>
+                            <p class="card-text">A secure media storage solution created using HTML, CSS, and Django.</p>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <!-- Nike Website Clone -->
+            <div class="col-md-6">
+                <a href="https://github.com/jerinjaison150503/nike-webpage-clone" target="_blank" class="text-decoration-none text-reset">
+                    <div class="card mb-4">
+                        <div class="card-body">
+                            <h5 class="card-title">Nike Website Clone</h5>
+                            <p class="card-text">A responsive website clone for Nike built using HTML and CSS.</p>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <!-- Apple Website Clone -->
+            <div class="col-md-6">
+                <a href="https://github.com/jerinjaison150503/apple-site-clone" target="_blank" class="text-decoration-none text-reset">
+                    <div class="card mb-4">
+                        <div class="card-body">
+                            <h5 class="card-title">Apple Website Clone</h5>
+                            <p class="card-text">A clone of the Apple website focusing on clean design and responsiveness.</p>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </section>
+    
+    <!-- <section id="photos" class="container">
+        <h2>Photos</h2>
+        <div class="row">
+            <div class="col-md-4">
+                <img src="https://via.placeholder.com/300" alt="Image" class="img-fluid mb-4">
+            </div>
+            <div class="col-md-4">
+                <img src="https://via.placeholder.com/300" alt=" Image" class="img-fluid mb-4">
+            </div>
+            <div class="col-md-4">
+                <img src="https://via.placeholder.com/300" alt=" Image" class="img-fluid mb-4">
+            </div>
+        </div>
+    </section> -->
+    <section id="skills" class="container">
+        <h2>My Skills</h2>
+        <div class="mb-3">
+            <label>HTML5</label>
+            <div class="progress">
+                <div class="progress-bar" role="progressbar" style="width: 95%;" aria-valuenow="95" aria-valuemin="0" aria-valuemax="100">95%</div>
+            </div>
+        </div>
+        <div class="mb-3">
+            <label>CSS3</label>
+            <div class="progress">
+                <div class="progress-bar" role="progressbar" style="width: 90%;" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100">90%</div>
+            </div>
+        </div>
+        <div class="mb-3">
+            <label>Python</label>
+            <div class="progress">
+                <div class="progress-bar" role="progressbar" style="width: 85%;" aria-valuenow="85" aria-valuemin="0" aria-valuemax="100">85%</div>
+            </div>
+        </div>
+        <div class="mb-3">
+            <label>Bootstrap</label>
+            <div class="progress">
+                <div class="progress-bar" role="progressbar" style="width: 80%;" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100">80%</div>
+            </div>
+        </div>
+    </section>
+    <section id="contact" class="container">
+        <h2 class="text-center mb-4">Contact Me</h2>
+        
+        <!-- Display Flash Messages -->
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+                <div class="alert alert-{{ messages[0][0] }}" role="alert">
+                    {{ messages[0][1] }}
+                </div>
+            {% endif %}
+        {% endwith %}
+        
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                <form action="/contact_me" method="POST">
+                    
+                    <div class="mb-3">
+                        <label for="name" class="form-label">Your Name</label>
+                        <input type="text" class="form-control" id="name" name="name" placeholder="Enter your name" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="email" class="form-label">Your Email</label>
+                        <input type="email" class="form-control" id="email" name="email" placeholder="Enter your email" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="subject" class="form-label">Subject</label>
+                        <input type="text" class="form-control" id="subject" name="subject" placeholder="Enter the subject" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="message" class="form-label">Your Message</label>
+                        <textarea class="form-control" id="message" name="message" rows="5" placeholder="Write your message here" required></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-custom w-100">Send Message</button>
+                </form>
+                
+            </div>
+        </div>
+        <div class="text-center mt-5">
+            <p>Email: <a href="mailto:jerin15052003@gmail.com" class="text-warning">jerin15052003@gmail.com</a></p>
+            <p>LinkedIn: <a href="https://www.linkedin.com/in/jerinjaison" target="_blank" class="text-warning">linkedin.com/in/jerinjaison</a></p>
+            <p>GitHub: <a href="https://github.com/jerinjaison150503" target="_blank" class="text-warning">github.com/jerinjaison150503</a></p>
+        </div>
+    </section>
+    
+    <footer>
+        <p>&copy; 2025 Jerin Jaison. All rights reserved.</p>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        function generateBackgroundLetters() {
+            const container = document.getElementById("background-letters");
+            container.innerHTML = "";
+            const chars = "Jerin Jaison";
+            const totalLetters = 100;
+            
+            for (let i = 0; i < totalLetters; i++) {
+                const letter = document.createElement("span");
+                letter.classList.add("letter");
+                letter.textContent = chars[Math.floor(Math.random() * chars.length)];
+                letter.style.top = `${Math.random() * 100}vh`;
+                letter.style.animationDuration = `${2 + Math.random() * 5}s`;
+                container.appendChild(letter);
+            }
+        }
+        generateBackgroundLetters();
+        
+        function scrambleTextEffect(element, text, speed = 50, delay = 2000) {
+            const chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*()";
+            let scrambledText = text.split("").map(() => chars[Math.floor(Math.random() * chars.length)]).join("");
+            let index = 0;
+            const interval = setInterval(() => {
+                scrambledText = scrambledText.split("").map((char, i) => {
+                    if (i <= index) return text[i];
+                    return chars[Math.floor(Math.random() * chars.length)];
+                }).join("");
+                element.textContent = scrambledText;
+                if (index >= text.length) {
+                    clearInterval(interval);
+                    setTimeout(() => scrambleTextEffect(element, text, speed, delay), delay);
+                }
+                index++;
+            }, speed);
+        }
+        
+        const scrambleElement = document.getElementById("scramble-text");
+        scrambleTextEffect(scrambleElement, "PORTFOLIO", 50, 3000);
+    </script>
+</body>
+</html>
