@@ -1,6 +1,6 @@
-import os
-from flask import Flask, render_template, request, redirect, flash
+from flask import Flask, render_template, request, redirect, flash, send_file
 from flask_mail import Mail, Message
+import os
 
 app = Flask(__name__)
 app.secret_key = "temporary_secret_key"
@@ -47,4 +47,12 @@ def contact_me():
             flash("Failed to send message. Please try again later.", "danger")
 
     return redirect('/')
-app.run()
+
+@app.route('/download-pdf')
+def download_pdf():
+    """Serve an existing PDF file for download."""
+    pdf_path = os.path.join(os.getcwd(), "static", "files", "resume.pdf")  
+    return send_file(pdf_path, as_attachment=True)
+
+if __name__ == '__main__':
+    app.run(debug=True)

@@ -31,7 +31,7 @@
         }
         
         nav a {
-            color: #f4f4f4;
+            color: #ffffff;
             font-weight: bold;
         }
         nav a:hover {
@@ -60,6 +60,40 @@
         .btn-custom:hover {
             background-color: #e0a800;
         }
+
+        #skills {
+            background-color: rgba(0, 0, 0, 0.6);
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0px 0px 15px rgba(255, 255, 255, 0.2);
+            text-align: center;
+        }
+        
+        #skills h2 {
+            font-size: 2.5rem;
+            text-transform: uppercase;
+            color: #ffc107;
+            text-shadow: 0 0 5px #ffc107;
+            margin-bottom: 20px;
+        }
+        
+        .skill-container {
+            margin-bottom: 20px;
+        }
+        
+        .skill-label {
+            font-size: 1.2rem;
+            font-weight: bold;
+            text-shadow: 0 0 3px #ffffff;
+            margin-bottom: 5px;
+        }
+        .list-group-item{
+            background-color: aliceblue;
+        }
+
+
+
+
         footer {
             background-color: #212529;
             text-align: center;
@@ -122,7 +156,7 @@
             height: 100%;
             font-size: 12px;
             font-family: monospace;
-            color: rgba(255, 255, 255, 0.5);
+            color: rgba(255, 255, 255, 0.895);
             pointer-events: none;
             overflow: hidden;
             z-index: -1;
@@ -164,6 +198,12 @@
         <p>Fullstack Developer | Intern at Synneffo Solution</p>
         <a href="#projects" class="btn btn-custom">My Projects</a>
         <a href="#contact" class="btn btn-custom">Contact Me</a>
+<br><br>
+
+        <a href="../static/files/resume.pdf" download="Jerin_Jaison_Resume.pdf" class="btn btn-custom">
+            Download    cv
+        </a>
+        
     </header>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <div class="container-fluid" >
@@ -196,17 +236,7 @@
     <section id="projects" class="container">
         <h2 class="text-center mb-4">Projects</h2>
         <div class="row">
-            <!-- Pet E-commerce Website -->
-            <div class="col-md-6">
-                <a href="https://github.com/jerinjaison150503/E-commerce-Site-Tails-and-Beyond" target="_blank" class="text-decoration-none text-reset">
-                    <div class="card mb-4">
-                        <div class="card-body">
-                            <h5 class="card-title">Pet E-commerce Website</h5>
-                            <p class="card-text">A platform to buy pet accessories and toys. Developed during my internship at Syneffo Solution.</p>
-                        </div>
-                    </div>
-                </a>
-            </div>
+    
             <!-- Portfolio Website -->
             <div class="col-md-6">
                 <a href="https://github.com/jerinjaison150503/portfolio-" target="_blank" class="text-decoration-none text-reset">
@@ -218,17 +248,19 @@
                     </div>
                 </a>
             </div>
-            <!-- BookMyShow Clone -->
+    
+            <!-- Pet E-commerce Website -->
             <div class="col-md-6">
-                <a href="https://github.com/jerinjaison150503/bookmyshow_clone" target="_blank" class="text-decoration-none text-reset">
+                <a href="https://github.com/jerinjaison150503/E-commerce-Site-Tails-and-Beyond" target="_blank" class="text-decoration-none text-reset">
                     <div class="card mb-4">
                         <div class="card-body">
-                            <h5 class="card-title">BookMyShow Clone</h5>
-                            <p class="card-text">A movie ticket booking platform built with HTML, CSS, and Bootstrap.</p>
+                            <h5 class="card-title">Pet E-commerce Website</h5>
+                            <p class="card-text">A platform to buy pet accessories and toys. Developed during my internship at Syneffo Solution.</p>
                         </div>
                     </div>
                 </a>
             </div>
+    
             <!-- Media Vault -->
             <div class="col-md-6">
                 <a href="https://github.com/jerinjaison150503/media--vault" target="_blank" class="text-decoration-none text-reset">
@@ -240,6 +272,31 @@
                     </div>
                 </a>
             </div>
+    
+            <!-- Weather App -->
+            <div class="col-md-6">
+                <a href="https://github.com/jerinjaison150503/weather-app" target="_blank" class="text-decoration-none text-reset">
+                    <div class="card mb-4">
+                        <div class="card-body">
+                            <h5 class="card-title">Weather App</h5>
+                            <p class="card-text">A real-time weather application that fetches live weather data from an API.</p>
+                        </div>
+                    </div>
+                </a>
+            </div>
+    
+            <!-- BookMyShow Clone -->
+            <div class="col-md-6">
+                <a href="https://github.com/jerinjaison150503/bookmyshow_clone" target="_blank" class="text-decoration-none text-reset">
+                    <div class="card mb-4">
+                        <div class="card-body">
+                            <h5 class="card-title">BookMyShow Clone</h5>
+                            <p class="card-text">A movie ticket booking platform built with HTML, CSS, and Bootstrap.</p>
+                        </div>
+                    </div>
+                </a>
+            </div>
+    
             <!-- Nike Website Clone -->
             <div class="col-md-6">
                 <a href="https://github.com/jerinjaison150503/nike-webpage-clone" target="_blank" class="text-decoration-none text-reset">
@@ -251,6 +308,7 @@
                     </div>
                 </a>
             </div>
+    
             <!-- Apple Website Clone -->
             <div class="col-md-6">
                 <a href="https://github.com/jerinjaison150503/apple-site-clone" target="_blank" class="text-decoration-none text-reset">
@@ -262,8 +320,22 @@
                     </div>
                 </a>
             </div>
+    
+            <!-- Digital Clock -->
+            <div class="col-md-6">
+                <a href="https://github.com/jerinjaison150503/digital-clock" target="_blank" class="text-decoration-none text-reset">
+                    <div class="card mb-4">
+                        <div class="card-body">
+                            <h5 class="card-title">Digital Clock</h5>
+                            <p class="card-text">A simple and dynamic digital clock built using HTML, CSS, and JavaScript.</p>
+                        </div>
+                    </div>
+                </a>
+            </div>
+    
         </div>
     </section>
+    
     
     <!-- <section id="photos" class="container">
         <h2>Photos</h2>
@@ -279,33 +351,76 @@
             </div>
         </div>
     </section> -->
+
+
     <section id="skills" class="container">
-        <h2>My Skills</h2>
-        <div class="mb-3">
-            <label>HTML5</label>
-            <div class="progress">
-                <div class="progress-bar" role="progressbar" style="width: 95%;" aria-valuenow="95" aria-valuemin="0" aria-valuemax="100">95%</div>
+        <h2 class="text-center mb-4">My Skills</h2>
+        
+        <div class="row">
+            <!-- Frontend Skills -->
+            <div class="col-md-6">
+                <h4>Frontend Development</h4>
+                <ul class="list-group mb-3">
+                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                        <span><i class="fab fa-html5"></i> HTML5</span>
+                        <span class="badge bg-primary">Advanced</span>
+                    </li>
+                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                        <span><i class="fab fa-css3-alt"></i> CSS3</span>
+                        <span class="badge bg-primary">Advanced</span>
+                    </li>
+                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                        <span><i class="fab fa-js"></i> JavaScript</span>
+                        <span class="badge bg-warning text-dark">Intermediate</span>
+                    </li>
+                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                        <span><i class="fab fa-bootstrap"></i> Bootstrap</span>
+                        <span class="badge bg-primary">Intermediate</span>
+                    </li>
+                </ul>
+            </div>
+            
+            <!-- Backend Skills -->
+            <div class="col-md-6">
+                <h4>Backend Development</h4>
+                <ul class="list-group mb-3">
+                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                        <span><i class="fab fa-python"></i> Python</span>
+                        <span class="badge bg-primary">Advanced</span>
+                    </li>
+                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                        <span><i class="fas fa-database"></i> MySQL</span>
+                        <span class="badge bg-warning text-dark">Intermediate</span>
+                    </li>
+                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                        <span><i class="fas fa-server"></i> Django</span>
+                        <span class="badge bg-warning text-dark">Intermediate</span>
+                    </li>
+                </ul>
             </div>
         </div>
-        <div class="mb-3">
-            <label>CSS3</label>
-            <div class="progress">
-                <div class="progress-bar" role="progressbar" style="width: 90%;" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100">90%</div>
-            </div>
-        </div>
-        <div class="mb-3">
-            <label>Python</label>
-            <div class="progress">
-                <div class="progress-bar" role="progressbar" style="width: 85%;" aria-valuenow="85" aria-valuemin="0" aria-valuemax="100">85%</div>
-            </div>
-        </div>
-        <div class="mb-3">
-            <label>Bootstrap</label>
-            <div class="progress">
-                <div class="progress-bar" role="progressbar" style="width: 80%;" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100">80%</div>
+        
+        <!-- Tools & Others -->
+        <div class="row">
+            <div class="col-md-12">
+                <h4>Tools & Technologies</h4>
+                <ul class="list-group">
+                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                        <span><i class="fab fa-git-alt"></i> Git & GitHub</span>
+                        <span class="badge bg-success">Advanced</span>
+                    </li>
+                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                        <span><i class="fas fa-terminal"></i> Command Line</span>
+                        <span class="badge bg-warning text-dark">Intermediate</span>
+                    </li>
+                </ul>
             </div>
         </div>
     </section>
+    
+    
+
+
     <section id="contact" class="container">
         <h2 class="text-center mb-4">Contact Me</h2>
         
